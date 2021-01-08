@@ -11,6 +11,11 @@ class APITest extends \PHPUnit\Framework\TestCase
         $this->client = new Client();
     }
 
+    public function tearDown(): void
+    {
+        unset($this->client);
+    }
+
     public function testEndpointGet()
     {
         $response = $this->client->request('GET', 'https://jsonplaceholder.typicode.com/posts/1');

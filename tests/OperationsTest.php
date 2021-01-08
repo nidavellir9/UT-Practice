@@ -10,9 +10,22 @@ class OperationsTest extends TestCase
         $this->op = new Operations();
     }
 
-    public function testSumWithTwoValues()
+    public function dataProvider()
     {
-        $this->assertEquals(7, $this->op->sum(2, 5));
+        return [
+            "Prueba uno" => [2, 5, 7],
+            "Prueba dos" => [2, 2, 4],
+            "Prueba tres" => [8, 2, 10],
+            "Prueba cuatro" => [10, 7, 17]
+        ];
+    }
+
+    /**
+     * @dataProvider dataProvider
+     */
+    public function testSumWithTwoValues($num1, $num2, $expected)
+    {
+        $this->assertEquals($expected, $this->op->sum($num1, $num2));
     }
 
     public function testSumWithNullValues()
